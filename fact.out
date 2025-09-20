@@ -1,0 +1,14 @@
+digraph main {
+   b0
+}
+digraph fact {
+   b0
+   then.0
+   else.0
+   b0 -> then.0
+   b0 -> else.0
+}
+Path Lengths from entry 'b0': {'b0': 0, 'then.0': 1, 'else.0': 1}
+Reverse Post Order from entry 'b0': ['b0', 'else.0', 'then.0']
+Back Edges from entry 'b0': []
+Is the CFG reducible from entry 'b0'?: True
