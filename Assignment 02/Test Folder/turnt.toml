@@ -1,0 +1,8 @@
+[envs.dataflow]
+command = """
+echo "=== Reaching Definitions ==="
+bril2json < {filename} | python3 ../df.py reaching
+echo ""
+echo "=== Available Expressions ==="
+bril2json < {filename} | python3 ../df.py available
+"""

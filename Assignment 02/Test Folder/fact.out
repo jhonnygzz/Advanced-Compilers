@@ -1,0 +1,27 @@
+=== Reaching Definitions ===
+b1:
+  in:  ∅
+  out: v13:instr_2, x:instr_0
+b1:
+  in:  ∅
+  out: v1:instr_0, v2:instr_1, v3:instr_2
+then.0:
+  in:  v1:instr_0, v2:instr_1, v3:instr_2
+  out: v1:instr_0, v2:instr_1, v3:instr_2, v4:instr_0
+else.0:
+  in:  v1:instr_0, v2:instr_1, v3:instr_2
+  out: v1:instr_0, v10:instr_5, v2:instr_1, v3:instr_2, v5:instr_0, v6:instr_1, v7:instr_2, v8:instr_3, v9:instr_4
+
+=== Available Expressions ===
+b1:
+  in:  ∅
+  out: ('call', ('a',))
+b1:
+  in:  ∅
+  out: ('eq', ('v1', 'v2')), ('id', ('a',))
+then.0:
+  in:  ('eq', ('v1', 'v2')), ('id', ('a',))
+  out: ('eq', ('v1', 'v2')), ('id', ('a',))
+else.0:
+  in:  ('eq', ('v1', 'v2')), ('id', ('a',))
+  out: ('call', ('v8',)), ('eq', ('v1', 'v2')), ('id', ('a',)), ('mul', ('v5', 'v9')), ('sub', ('v6', 'v7'))

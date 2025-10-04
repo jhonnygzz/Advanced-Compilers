@@ -1,0 +1,57 @@
+=== Reaching Definitions ===
+b1:
+  in:  ∅
+  out: greater:instr_0, v4:instr_1
+then.1:
+  in:  greater:instr_0, v4:instr_1
+  out: greater:instr_0, v4:instr_1
+else.1:
+  in:  greater:instr_0, v4:instr_1
+  out: greater:instr_0, v4:instr_1
+endif.1:
+  in:  greater:instr_0, v4:instr_1
+  out: greater:instr_0, v4:instr_1
+foreverloop:
+  in:  bothZero:instr_5, greater:instr_0, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+  out: bothZero:instr_5, greater:instr_0, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+then.2:
+  in:  bothZero:instr_5, greater:instr_0, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+  out: bothZero:instr_5, greater:instr_0, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+else.2:
+  in:  bothZero:instr_5, greater:instr_0, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+  out: bothZero:instr_5, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+loopend:
+  in:  bothZero:instr_5, greater:instr_0, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+  out: bothZero:instr_5, greater:instr_0, greater:instr_1, modX:instr_0, modY:instr_1, one:instr_0, v4:instr_1, xZero:instr_3, yZero:instr_4, zero:instr_2
+b1:
+  in:  ∅
+  out: divisor:instr_0, multiple:instr_1, rem:instr_2
+
+=== Available Expressions ===
+b1:
+  in:  ∅
+  out: ('gt', ('x', 'y')), ('id', ('y',))
+then.1:
+  in:  ('gt', ('x', 'y')), ('id', ('y',))
+  out: ('gt', ('x', 'y')), ('id', ('x',)), ('id', ('y',))
+else.1:
+  in:  ('gt', ('x', 'y')), ('id', ('y',))
+  out: ('gt', ('x', 'y')), ('id', ('y',))
+endif.1:
+  in:  ('gt', ('x', 'y')), ('id', ('y',))
+  out: ('gt', ('x', 'y')), ('id', ('y',))
+foreverloop:
+  in:  ∅
+  out: ('and', ('xZero', 'yZero')), ('call', ('greater', 'x')), ('call', ('greater', 'y')), ('eq', ('modX', 'zero')), ('eq', ('modY', 'zero'))
+then.2:
+  in:  ('and', ('xZero', 'yZero')), ('call', ('greater', 'x')), ('call', ('greater', 'y')), ('eq', ('modX', 'zero')), ('eq', ('modY', 'zero'))
+  out: ('and', ('xZero', 'yZero')), ('call', ('greater', 'x')), ('call', ('greater', 'y')), ('eq', ('modX', 'zero')), ('eq', ('modY', 'zero'))
+else.2:
+  in:  ('and', ('xZero', 'yZero')), ('call', ('greater', 'x')), ('call', ('greater', 'y')), ('eq', ('modX', 'zero')), ('eq', ('modY', 'zero'))
+  out: ('add', ('greater', 'one')), ('and', ('xZero', 'yZero')), ('eq', ('modX', 'zero')), ('eq', ('modY', 'zero'))
+loopend:
+  in:  ('and', ('xZero', 'yZero')), ('call', ('greater', 'x')), ('call', ('greater', 'y')), ('eq', ('modX', 'zero')), ('eq', ('modY', 'zero'))
+  out: ('and', ('xZero', 'yZero')), ('call', ('greater', 'x')), ('call', ('greater', 'y')), ('eq', ('modX', 'zero')), ('eq', ('modY', 'zero'))
+b1:
+  in:  ∅
+  out: ('div', ('val', 'mod')), ('mul', ('divisor', 'mod')), ('sub', ('val', 'multiple'))

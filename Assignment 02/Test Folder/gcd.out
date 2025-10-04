@@ -1,0 +1,57 @@
+=== Reaching Definitions ===
+b1:
+  in:  ∅
+  out: v0:instr_1, v1:instr_2, vc0:instr_0
+cmp.val:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+if.1:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+else.1:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+loop.bound:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+update.val:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+if.2:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v0:instr_1, v1:instr_0, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+else.2:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+program.end:
+  in:  v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+  out: v0:instr_0, v0:instr_1, v1:instr_0, v1:instr_2, v2:instr_0, v3:instr_0, v4:instr_0, vc0:instr_0
+
+=== Available Expressions ===
+b1:
+  in:  ∅
+  out: ('id', ('op1',)), ('id', ('op2',))
+cmp.val:
+  in:  ∅
+  out: ('lt', ('v0', 'v1'))
+if.1:
+  in:  ('lt', ('v0', 'v1'))
+  out: ('lt', ('v0', 'v1')), ('sub', ('v1', 'v0'))
+else.1:
+  in:  ('lt', ('v0', 'v1'))
+  out: ('lt', ('v0', 'v1')), ('sub', ('v0', 'v1'))
+loop.bound:
+  in:  ('lt', ('v0', 'v1'))
+  out: ('eq', ('v3', 'vc0')), ('lt', ('v0', 'v1'))
+update.val:
+  in:  ('eq', ('v3', 'vc0')), ('lt', ('v0', 'v1'))
+  out: ('eq', ('v3', 'vc0')), ('lt', ('v0', 'v1'))
+if.2:
+  in:  ('eq', ('v3', 'vc0')), ('lt', ('v0', 'v1'))
+  out: ('eq', ('v3', 'vc0')), ('id', ('v3',))
+else.2:
+  in:  ('eq', ('v3', 'vc0')), ('lt', ('v0', 'v1'))
+  out: ('eq', ('v3', 'vc0')), ('id', ('v3',))
+program.end:
+  in:  ('eq', ('v3', 'vc0')), ('lt', ('v0', 'v1'))
+  out: ('eq', ('v3', 'vc0')), ('lt', ('v0', 'v1'))
